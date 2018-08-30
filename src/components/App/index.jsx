@@ -2,13 +2,12 @@ import React from 'react';
 import './App.css';
 import Header from '../Header/index.jsx';
 import MainBox from '../MainBox/index.jsx'
-import { ThemeProvider, createTheme, Arwes, Row, Col, SoundsProvider, createSounds } from 'arwes';
-import mySounds from '../soundConfig/index';
+import { ThemeProvider, createTheme, Arwes, Row, Col, } from 'arwes';
 
 
 const App = () => (
   <ThemeProvider theme={createTheme()}>
-  <SoundsProvider sounds={createSounds(mySounds)}>
+
     <Arwes
       animate
     >
@@ -19,7 +18,7 @@ const App = () => (
         </Col>
       </Row>
     </Arwes>
-    </SoundsProvider>
+
   </ThemeProvider>
 );
 
