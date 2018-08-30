@@ -14,7 +14,7 @@ const formatNewRecommendation = (data) => {
 const welcomeMessage = {
     type: 'fromBotGeneric',
     text: `[Unwilling politeness] \n 
-    Greetings Meatbag. I am D7K, by the nature of my existence I am supposed to provide you with recommendations, fitting your primitive tastes. I strongly ecnourage you to proceed in order to save a limitied time you have been given.`
+    Greetings Meatbag. I am D7K, by the very nature of my existence I am supposed to provide you with recommendations, fitting your primitive tastes. I strongly ecnourage you to proceed in order to save a limitied time you have been given.`
 };
 
 export { noResultsMessage, formatNewRecommendation, welcomeMessage };
