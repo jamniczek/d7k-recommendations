@@ -3,9 +3,9 @@ import { Frame, List, Row } from 'arwes';
 import Item from '../Item/index'
 
 const BotMessage = (props) => {
-    const items = props.payload.map(item => {
+    const items = props.payload.map((item, index) => {
         const {Name, wTeaser, wUrl, yUrl} = item;
-        return <Item title={Name} text={wTeaser} yt={yUrl} wiki={wUrl}/>
+        return <Item key={index} title={Name} text={wTeaser} yt={yUrl} wiki={wUrl}/>
     })
     return (
         <Row col s={11} m={8} l={8} xl={8} >

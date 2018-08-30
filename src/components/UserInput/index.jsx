@@ -9,12 +9,12 @@ const UserInput = (props) => {
         fontFamily: 'Titillium Web", "sans-serif',
         fontSize: '14px',
         outline: 'none',
-        margin: '5px',
+        margin: '5px',        
         width: '25vw'
     }
     return (
         <Row>
-            <Col xl={12}>
+            <Col xl={12} style={{margin: '5px'}}>
                 <form action=""
                     onSubmit={props.handler}
                     style={{
