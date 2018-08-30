@@ -38,7 +38,7 @@ class MainBox extends Component {
                         });
                     })
             } else {
-                const url = 'http://localhost:3002/recognize';
+                const url = 'https://secret-fortress-42712.herokuapp.com/recognize';
                 const userQuery = this.state.userInput;
                 const data = {
                     query: userQuery
