@@ -8,7 +8,10 @@ import { ThemeProvider, createTheme, Arwes, Row, Col } from 'arwes';;
 
 const App = () => (
   <ThemeProvider theme={createTheme()}>
-    <Arwes>
+    <Arwes
+      animate
+      background={{xl: 'botbackground.jpg'}}
+    >
       <Row style={{ maxHeight: '80vh' }}>
         <Col s={12} m={8} l={6} offset={['m2', 'l3']} >
           <Header />

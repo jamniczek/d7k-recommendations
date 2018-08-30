@@ -12,7 +12,7 @@ class MainBox extends Component {
         this.state = {
             messages: [welcomeMessage],
             userInput: '',
-            isRecommending: true
+            isRecommending: false
         }
     }
 
@@ -31,7 +31,38 @@ class MainBox extends Component {
                 .then(res => res.json())
                 .then(data => {
                     const newMessage = data.Similar.Results.length <= 0 ? noResultsMessage : formatNewRecommendation(data)
-                    this.setState({ messages: [...this.state.messages, newMessage] });
+                    this.setState({
+                        messages: [...this.state.messages, newMessage],
+                        isRecommending: false
+                    });
+                })
+        } else {
+            console.log(this.state.userInput)
+            const url = 'http://localhost:3002/recognize';
+            const userQuery = this.state.userInput;
+            const data = {
+                query: userQuery
+            }
+            console.log(data)
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    const newMessage = data.message;
+                    if (data.intent === 'recommend') {
+                        this.setState({
+                            messages: [...this.state.messages, newMessage],
+                            isRecommending: true
+                        })
+                    } else {
+                        this.setState({ messages: [...this.state.messages, newMessage] });
+                    }
                 })
         }
     };
