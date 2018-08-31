@@ -12,13 +12,13 @@ class MainBox extends Component {
         this.state = {
             messages: [welcomeMessage],
             userInput: '',
-            isRecommending: false
+            isRecommending: true
         }
     }
     userInputHandler = (event) => {
         event.preventDefault();
 
-        if (this.state.userInput) {
+        if (this.state.userInput.trim()) {
             const newMessage = {
                 type: 'fromUser',
                 text: this.state.userInput
@@ -39,7 +39,7 @@ class MainBox extends Component {
                         });
                     })
             } else {
-                const url = 'https://secret-fortress-42712.herokuapp.com/recognize';
+                const url = 'https://obscure-ravine-77567.herokuapp.com//recognize';
                 const userQuery = this.state.userInput;
                 const data = {
                     query: userQuery
