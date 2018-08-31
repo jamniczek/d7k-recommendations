@@ -12,7 +12,7 @@ class MainBox extends Component {
         this.state = {
             messages: [welcomeMessage],
             userInput: '',
-            isRecommending: true
+            isRecommending: false
         }
     }
     userInputHandler = (event) => {
@@ -39,7 +39,7 @@ class MainBox extends Component {
                         });
                     })
             } else {
-                const url = 'https://obscure-ravine-77567.herokuapp.com//recognize';
+                const url = 'https://obscure-ravine-77567.herokuapp.com/recognize';
                 const userQuery = this.state.userInput;
                 const data = {
                     query: userQuery
