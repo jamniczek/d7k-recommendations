@@ -47,8 +47,8 @@ class MainBox extends Component {
                 fetch(url, {
                     method: 'POST',
                     headers: {
-                        'Access-Control-Allow-Origin': 'https://ancient-badlands-76161.herokuapp.com/' , 
-                        'Content-type': 'application/json',
+                        'Access-Control-Allow-Origin': '*' , 
+                        'Content-type': 'application/json'
                     },
                     body: JSON.stringify(data)
                 })
