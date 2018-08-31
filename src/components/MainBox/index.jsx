@@ -17,6 +17,7 @@ class MainBox extends Component {
     }
     userInputHandler = (event) => {
         event.preventDefault();
+
         if (this.state.userInput) {
             const newMessage = {
                 type: 'fromUser',
@@ -43,7 +44,6 @@ class MainBox extends Component {
                 const data = {
                     query: userQuery
                 }
-                console.log(data)
                 fetch(url, {
                     method: 'POST',
                     headers: {
@@ -60,13 +60,14 @@ class MainBox extends Component {
                                 isRecommending: true,
                                 userInput: ''
                             })
+                            
                         } else {
                             this.setState({
                                 messages: [...this.state.messages, newMessage],
                                 userInput: ''
                             });
                         }
-                    })
+                    });
             }
         }
     };
@@ -74,6 +75,11 @@ class MainBox extends Component {
     inputChangeHandler = (event) => {
         this.setState({ userInput: event.target.value });
     };
+
+    componentDidUpdate() {
+        const hook = document.getElementById('hook')
+        hook.scrollIntoView()
+    }
 
     render() {
         const messages = this.state.messages.map((message, index) => {
@@ -96,6 +102,7 @@ class MainBox extends Component {
                     header='Status: Online'
                 >
                     {messages}
+                    <div id='hook'></div>
                 </Project>
                 <UserInput handler={this.userInputHandler}
                     changeHandler={this.inputChangeHandler}
