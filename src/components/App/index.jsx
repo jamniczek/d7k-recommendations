@@ -13,7 +13,7 @@ const App = () => (
     >
       <Row style={{ maxHeight: '80vh' }}>
         <Col s={12} m={8} l={6} offset={['m2', 'l3']} >
-          <Header />
+          <Header className='header' /> 
           <MainBox />
         </Col>
       </Row>

@@ -23,13 +23,25 @@ class MainBox extends Component {
                 type: 'fromUser',
                 text: this.state.userInput
             }
-            this.setState({ messages: [...this.state.messages, newMessage] })
-            if (this.state.isRecommending) {
-                const [item1, item2, item3] = this.state.userInput.split(', ');
-                const url = `https://tastedive.com/api/similar?info=1&limit=5&q=${encodeURI(item1)}%2C${encodeURI(item2)}&%2C${encodeURI(item3)}&k=315222-recommed-2J3YXI6D`
+            this.setState({ messages: [...this.state.messages, newMessage] });
 
-                fetch(url)
-                    .then(res => res.json())
+            if (this.state.isRecommending) {
+                const data = this.state.userInput.split(', ');
+                console.log(data)
+                const url = `https://evening-cove-27837.herokuapp.com/recommend`
+                fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-type': 'application/json'
+                    },
+                    body: {
+                        titles: JSON.stringify(data)
+                    }
+                })
+                    .then(res => {
+                        console.log(res)
+                        res.json()
+                    })
                     .then(data => {
                         const newMessage = data.Similar.Results.length <= 0 ? noResultsMessage : formatNewRecommendation(data)
                         this.setState({
@@ -39,7 +51,7 @@ class MainBox extends Component {
                         });
                     })
             } else {
-                const url = 'https://obscure-ravine-77567.herokuapp.com/recognize';
+                const url = 'https://evening-cove-27837.herokuapp.com/recognize';
                 const userQuery = this.state.userInput;
                 const data = {
                     query: userQuery
@@ -47,7 +59,6 @@ class MainBox extends Component {
                 fetch(url, {
                     method: 'POST',
                     headers: {
-                        'Access-Control-Allow-Origin': '*' , 
                         'Content-type': 'application/json'
                     },
                     body: JSON.stringify(data)
