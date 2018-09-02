@@ -26,23 +26,23 @@ class MainBox extends Component {
             this.setState({ messages: [...this.state.messages, newMessage] });
 
             if (this.state.isRecommending) {
-                const data = this.state.userInput.split(', ');
-                console.log(data)
+                const data = {
+                    titles: this.state.userInput.split(', ')
+                }
+
                 const url = `https://evening-cove-27837.herokuapp.com/recommend`
                 fetch(url, {
                     method: 'POST',
                     headers: {
                         'Content-type': 'application/json'
                     },
-                    body: {
-                        titles: JSON.stringify(data)
-                    }
+                    body: JSON.stringify(data)
+
                 })
-                    .then(res => {
-                        console.log(res)
-                        res.json()
-                    })
+                    .then(res => res.json())
                     .then(data => {
+
+                        console.log(data);
                         const newMessage = data.Similar.Results.length <= 0 ? noResultsMessage : formatNewRecommendation(data)
                         this.setState({
                             messages: [...this.state.messages, newMessage],
@@ -72,7 +72,7 @@ class MainBox extends Component {
                                 isRecommending: true,
                                 userInput: ''
                             })
-                            
+
                         } else {
                             this.setState({
                                 messages: [...this.state.messages, newMessage],

@@ -10,11 +10,11 @@ const UserInput = (props) => {
         fontSize: '14px',
         outline: 'none',
         margin: '5px',        
-        width: '25vw'
+        width: '35vw'
     }
     return (
         <Row>
-            <Col xl={12} style={{margin: '5px'}}>
+            <Col xl={12} style={{margin: '5px', display: 'flex'}}>
                 <form action=""
                     onSubmit={props.handler}
                     style={{
